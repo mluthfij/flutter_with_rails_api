@@ -1,3 +1,4 @@
+import 'package:article_app_flutter/add-article.dart';
 import 'package:article_app_flutter/model.dart';
 import 'package:article_app_flutter/repository.dart';
 import 'package:flutter/material.dart';
@@ -26,6 +27,10 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
+      routes: {
+        '/home': (context) => MyHomePage(title: 'Flutter Demo Home Page'),
+        '/add-article': (context) => AddArticle(),
+      },
       home: const MyHomePage(title: 'Flutter Demo Home Page'),
     );
   }
@@ -79,6 +84,13 @@ class _MyHomePageState extends State<MyHomePage> {
         // Here we take the value from the MyHomePage object that was created by
         // the App.build method, and use it to set our appbar title.
         title: Text(widget.title),
+        actions: [
+          IconButton(
+            icon: Icon(Icons.add),
+            onPressed: () =>
+                Navigator.of(context).popAndPushNamed('/add-article'),
+          )
+        ],
       ),
       body: ListView.separated(
           itemBuilder: (context, index) {
